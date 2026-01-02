@@ -1,10 +1,14 @@
 import "./ChatWindow.css";
 import Chat from "./Chat.jsx";
+import { ChatContext } from "./ChatContext.jsx";
 import { MyContext } from "./MyContext.jsx";
-import { useContext, useState, useEffect, use } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ScaleLoader } from "react-spinners";
+import { authFetch, logout } from "./auth.js";
+import { useNavigate } from "react-router-dom";
 
 function ChatWindow() {
+  const { user, setUser } = useContext(MyContext);
   const {
     prompt,
     setPrompt,
@@ -14,84 +18,108 @@ function ChatWindow() {
     previousChats,
     setPreviousChats,
     setNewChat,
-  } = useContext(MyContext);
+  } = useContext(ChatContext);
+
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  //Function to send the prompt to the backend and get the AIs reply
+  // Send prompt to backend
   const getReply = async () => {
+    if (!user) return; // not logged in, skip
+
     setLoading(true);
     setNewChat(false);
-    console.log("Prompt sent:", prompt, "Thread ID:", currThreadId);
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message: prompt,
-        threadId: currThreadId,
-      }),
-    };
 
-    //Make the API request to the backend
     try {
-      const response = await fetch("http://localhost:8080/api/chat", options);
+      const response = await authFetch("http://localhost:8080/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: prompt, threadId: currThreadId }),
+      });
+      if (!response.ok) return;
       const res = await response.json();
-      console.log("Response:", res);
       setReply(res.reply);
     } catch (err) {
-      console.error("Error fetching reply:", err);
+      console.error(err);
     }
+
     setLoading(false);
   };
 
-  //Append new Chat to previous chats.
+  // Append new chat
   useEffect(() => {
     if (prompt && reply) {
-      setPreviousChats((previousChats) => [
-        ...previousChats,
-        {
-          role: "user",
-          content: prompt,
-        },
-        {
-          role: "assistant",
-          content: reply,
-        },
+      setPreviousChats((prev) => [
+        ...prev,
+        { role: "user", content: prompt },
+        { role: "assistant", content: reply },
       ]);
     }
-
     setPrompt("");
   }, [reply]);
 
-  const handleProfileClick = () => {
-    setIsOpen(!isOpen);
+  const handleProfileClick = () => setIsOpen(!isOpen);
+
+  const handleLogout = () => {
+    logout();
+    setUser(null);
+    setIsOpen(false);
+    navigate("/chat");
+    window.location.reload();
   };
 
   return (
     <div className="chatWindow">
       <div className="navbar">
-        <span className="name">
-          PromptGPT <i className="fa-solid fa-chevron-down"></i>
-        </span>
+        <span className="name">PromptGPT</span>
+
         <div className="userIconDiv" onClick={handleProfileClick}>
+          {user &&
+            user.username && ( //check if user is logged in
+              <span className="username">{user.username}</span>
+            )}
           <span className="userIcon">
             <i className="fa-solid fa-user"></i>
           </span>
         </div>
       </div>
+
       {isOpen && (
         <div className="dropDown">
-          <div className="dropDownItem">Sign up</div>
-          <div className="dropDownItem">Login</div>
-          <div className="dropDownItem">Logout</div>
+          {!user && (
+            <>
+              <button
+                className="dropDownItem"
+                onClick={() => {
+                  navigate("/register");
+                  setIsOpen(false);
+                }}
+              >
+                Sign Up
+              </button>
+              <button
+                className="dropDownItem"
+                onClick={() => {
+                  navigate("/login");
+                  setIsOpen(false);
+                }}
+              >
+                Login
+              </button>
+            </>
+          )}
+
+          {user && (
+            <button className="dropDownItem" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
         </div>
       )}
 
-      <Chat></Chat>
+      <Chat />
 
-      {/* <ScaleLoader color="#fff" loading={loading}></ScaleLoader> */}
       {loading && (
         <div className="loaderOverlay">
           <ScaleLoader color="#fff" />
@@ -105,7 +133,7 @@ function ChatWindow() {
             placeholder="Ask anything"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            onKeyDown={(e) => (e.key === "Enter" ? getReply() : "")}
+            onKeyDown={(e) => e.key === "Enter" && getReply()}
           />
           <div id="submit" onClick={getReply}>
             <i className="fa-solid fa-paper-plane"></i>

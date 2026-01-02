@@ -1,31 +1,3 @@
-/* .chats {
-  max-width: 700px;
-  overflow-y: scroll;
-  padding: 8rem;
-}
-
-.userDiv {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 0.9rem;
-}
-
-.gptDiv {
-  text-align: left;
-  font-size: 0.9rem;
-}
-
-.userMessage {
-  background-color: #323232;
-  padding: 10px 20px;
-  border-radius: 14px;
-  margin-left: 15rem;
-  max-width: 500px;
-  width: fit-content;
-}
-
- */
-
 /* Chat container */
 .chat {
   flex: 1;
@@ -58,28 +30,14 @@
 
 /* GPT bubble */
 .gptMessage {
-  /* background-color: #2f2f2f; */
   color: #ffffff;
   padding: 14px 18px;
-  /* border-radius: 12px; */
   max-width: 75%;
   line-height: 1.6;
   font-size: 15px;
   text-align: left;
   white-space: pre-wrap;
   word-wrap: break-word;
-}
-.gptMessage p {
-  margin: 0;
-}
-.gptMessage ul {
-  margin: 0;
-}
-/* .gptMessage li{
-  margin: 0;
-} */
-.gptMessage ol {
-  margin: 0;
 }
 
 /* User bubble */
@@ -106,32 +64,29 @@
   margin-right: 20px;
 }
 
-/* "Start a new chat!" title */
-/* .newChatTitle {
-  margin-top: 15px;
-  color: white;
-  font-size: 32px;
-  font-weight: 600;
-  text-align: center;
-} */
-
+/* New chat screen wrapper */
 .newChatWrapper {
-  flex: 1; /* take full chat height */
+  flex: 1;
   display: flex;
-  align-items: center; /* vertical center */
-  justify-content: center; /* horizontal center */
-}
-
-.newChatTitle {
-  color: white;
-  font-size: 42px;
-  font-weight: 600;
-  text-align: center;
-}
-.newChatWrapper {
+  align-items: center;
+  justify-content: center;
   animation: fadeIn 0.3s ease-in;
 }
 
+/* New chat title */
+.newChatTitle {
+  color: whitesmoke;
+  font-size: 42px;
+  font-weight: 600;
+  text-align: center;
+  margin: 20px;
+}
+.newChatSubtitle{
+  color: whitesmoke;
+  text-align: center;
+}
+
+/* Fade animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -159,10 +114,73 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* border radius for code block in output */
-.hljs {
+/* Code block styling */
+.hljs,
+.gptMessage pre {
   border-radius: 15px;
 }
+
+.gptMessage pre {
+  background-color: #1e1e1e;
+  padding: 14px;
+  overflow-x: auto;
+  margin: 10px 0;
+}
+
+/* Inline code */
+.gptMessage code {
+  background-color: #2d2d2d;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: "Fira Code", monospace;
+}
+
+/* Markdown headings */
+.gptMessage h1,
+.gptMessage h2,
+.gptMessage h3 {
+  margin: 12px 0 8px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.gptMessage h1 {
+  font-size: 22px;
+}
+
+.gptMessage h2 {
+  font-size: 18px;
+}
+
+.gptMessage h3 {
+  font-size: 16px;
+}
+
+/* Markdown blockquote */
+.gptMessage blockquote {
+  border-left: 4px solid #555;
+  padding-left: 12px;
+  margin: 10px 0;
+  color: #d1d1d1;
+}
+
+/* Markdown lists and paragraphs — horizontal alignment */
+.gptMessage p,
+.gptMessage li {
+  display: inline-block;
+  margin:  0.5rem;
+}
+
+/* Reset default list margins & padding */
+.gptMessage ul,
+.gptMessage ol {
+  margin: 0;
+  padding-left: 0; /* remove extra indentation */
+  list-style-position: inside; /* optional: keep bullets inside */
+}
+
+/* Preserve formatting */
 .pre {
   white-space: pre-wrap;
 }

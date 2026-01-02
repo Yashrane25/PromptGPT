@@ -1,101 +1,78 @@
-// import "./Chat.css";
-// import { useContext } from "react";
-// import { MyContext } from "./MyContext.jsx";
-
-// function Chat() {
-//   const { newChat, previousChats } = useContext(MyContext);
-//   return (
-//     <>
-//       {newChat && <h1>Start a new chat!</h1>}
-
-//       <div className="chat">
-//         {previousChats?.map((chat, idx) => (
-//           <div
-//             className={chat.role === "user" ? "userDiv" : "gptDiv"}
-//             key={idx}
-//           >
-//             {chat.role === "user" ? (
-//               <p className="userMessage">{chat.content}</p>
-//             ) : (
-//               <p className="gptMessage">{chat.content}</p>
-//             )}
-//           </div>
-//         ))}
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Chat;
-
 import "./Chat.css";
 import { useContext, useState, useEffect } from "react";
-import { MyContext } from "./MyContext.jsx";
+import { ChatContext } from "./ChatContext.jsx";
 import ReactMarkdown from "react-markdown";
-import RehypeHighlight from "rehype-highlight";
-// import "highlight.js/styles/github.css";   //Light theme code colour
-import "highlight.js/styles/github-dark.css"; //Dark theme colour
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/github-dark.css";
+import { MyContext } from "./MyContext.jsx";
 
 function Chat() {
-  const { newChat, previousChats, reply } = useContext(MyContext);
-  const [latestReply, setLatestReply] = useState(null);
+  const { newChat, previousChats, reply } = useContext(ChatContext);
+  const [latestReply, setLatestReply] = useState("");
 
-  // useEffect(() => {
-  //   //latestReply saperate => typing effect.
-  //   if (!previousChats?.length) return;
+  const { user } = useContext(MyContext);
 
-  //   const content = reply.split(" "); //individual words
-
-  //   let idx = 0;
-  //   const interval = setInterval(() => {
-  //     setLatestReply(content.slice(0, idx + 1).join(" "));
-
-  //     idx++;
-  //     if (idx >= content.length) clearInterval(interval);
-  //   }, 40);
-
-  //   return () => clearInterval(interval);
-  // }, [previousChats, reply]);
-
+  // Typing animation for assistant reply
   useEffect(() => {
-    if (reply === null) {
-      setLatestReply(null);
+    if (!reply) {
+      setLatestReply("");
       return;
     }
 
-    if (!previousChats?.length) return;
-
-    let idx = 0;
+    let index = 0;
     const interval = setInterval(() => {
-      setLatestReply(reply.slice(0, idx + 1)); // character by character
-      idx++;
-      if (idx >= reply.length) clearInterval(interval);
-    }, 20);
+      setLatestReply(reply.slice(0, index + 1));
+      index++;
+      if (index >= reply.length) clearInterval(interval);
+    }, 15);
 
     return () => clearInterval(interval);
-  }, [previousChats, reply]);
+  }, [reply]);
+
+  function normalizeMarkdown(text = "") {
+    // Fix numbered lists like: "1.\n\nText" → "1. Text"
+    return text.replace(/(\d+)\.\s*\n+/g, "$1. ");
+  }
 
   return (
     <>
-      {/* {newChat && <h1 className="newChatTitle">Start a new chat!</h1>} */}
+      {/* New chat welcome */}
       {newChat && (
         <div className="newChatWrapper">
-          <h1 className="newChatTitle">Start a new chat!</h1>
+          {/* <h1 className="newChatTitle">Start a new chat!</h1> */}
+          {user ? (
+            <h1 className="newChatTitle">Start a new chat!</h1>
+          ) : (
+            <div>
+              <h1 className="newChatTitle">
+                You must have an account to use PromptGPT Please log in or
+                register.
+              </h1>
+              <p className="newChatSubtitle">
+                Log in or register through the user icon above to access
+                PromptGPT’s chat features.
+              </p>
+            </div>
+          )}
         </div>
       )}
 
       <div className="chat">
-        {previousChats?.slice(0, -1).map((chat, idx) => (
+        {/* Previous messages except latest assistant reply */}
+        {previousChats.slice(0, -1).map((chat, idx) => (
           <div
             key={idx}
             className={`messageRow ${chat.role === "user" ? "right" : "left"}`}
           >
             <div
               className={chat.role === "user" ? "userMessage" : "gptMessage"}
-              key={idx}
             >
               {chat.role === "assistant" ? (
-                <ReactMarkdown rehypePlugins={[RehypeHighlight]}>
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeHighlight]}
+                >
                   {chat.content}
                 </ReactMarkdown>
               ) : (
@@ -105,23 +82,20 @@ function Chat() {
           </div>
         ))}
 
-        {/* if null print previous chat or print latest chats */}
+        {/* Latest assistant reply with typing animation */}
         {previousChats.length > 0 && (
-          <>
-            {latestReply === null ? (
-              <div className="left" key={"non-typing"}>
-                <ReactMarkdown rehypePlugins={[RehypeHighlight]}>
-                  {previousChats[previousChats.length - 1].content}
-                </ReactMarkdown>{" "}
-              </div>
-            ) : (
-              <div className="left" key={"typing"}>
-                <ReactMarkdown rehypePlugins={[RehypeHighlight]}>
-                  {latestReply}
-                </ReactMarkdown>
-              </div>
-            )}
-          </>
+          <div className="messageRow left">
+            <div className="gptMessage">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeHighlight]}
+              >
+                {normalizeMarkdown(
+                  latestReply || previousChats[previousChats.length - 1].content
+                )}
+              </ReactMarkdown>
+            </div>
+          </div>
         )}
       </div>
     </>
