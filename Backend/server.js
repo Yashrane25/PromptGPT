@@ -6,7 +6,7 @@ import chatRouts from "./routes/chat.js";
 import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 // Middleware
 app.use(express.json()); // To parse JSON request bodies
@@ -15,7 +15,7 @@ app.use(cors()); // Enable CORS for all routes
 app.use("/api/auth", authRoutes);
 app.use("/api", chatRouts);
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log(`Server is running on ${PORT}`);
   connectToDB();
 });
