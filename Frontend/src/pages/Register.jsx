@@ -15,7 +15,7 @@ const Register = () => {
     try {
       await register(username, email, password);
       navigate("/chat");
-      alert("Registered and logged in successfully!");
+      // alert("Registered and logged in successfully!");
     } catch (err) {
       alert(err.message);
     }

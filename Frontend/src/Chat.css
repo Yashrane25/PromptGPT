@@ -64,6 +64,81 @@
   margin-right: 20px;
 }
 
+/* Title if not loged in */
+.newChatTitle1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+/* floting animation */
+.letter1 {
+  display: inline-block;
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.letter1:nth-child(odd) {
+  animation-duration: 2s;
+}
+.letter1:nth-child(even) {
+  animation-duration: 2.5s;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1px);
+  }
+  50% {
+    transform: translateX(1px);
+  }
+  75% {
+    transform: translateX(-0.5px);
+  }
+}
+
+.newChatSubtitle1 {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: #d1d5db;
+  line-height: 1.5;
+}
+
+/* flotating animation to p */
+.letter2 {
+  display: inline-block;
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.letter2:nth-child(odd) {
+  animation-duration: 2s;
+}
+.letter2:nth-child(even) {
+  animation-duration: 2.5s;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-0.1px);
+  }
+  50% {
+    transform: translateX(0.6px);
+  }
+  75% {
+    transform: translateX(-0.1px);
+  }
+}
+
 /* New chat screen wrapper */
 .newChatWrapper {
   flex: 1;
@@ -73,17 +148,33 @@
   animation: fadeIn 0.3s ease-in;
 }
 
-/* New chat title */
-.newChatTitle {
-  color: whitesmoke;
-  font-size: 42px;
-  font-weight: 600;
-  text-align: center;
-  margin: 20px;
+/* Typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
-.newChatSubtitle {
-  color: whitesmoke;
+
+/* h1 typing */
+.newChatTitle2.typing {
   text-align: center;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 1.5s steps(30, end) forwards;
+}
+
+/* p fade-in after h1 */
+.newChatSubTitle2.typing {
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+  animation-delay: 1.5s;
+  margin-top: 0;
 }
 
 /* Fade animation */
@@ -176,8 +267,8 @@
 .gptMessage ul,
 .gptMessage ol {
   margin: 0;
-  padding-left: 0; /* remove extra indentation */
-  list-style-position: inside; /* optional: keep bullets inside */
+  padding-left: 0; 
+  list-style-position: inside; 
 }
 
 /* Preserve formatting */

@@ -31,7 +31,7 @@ function Chat() {
   }, [reply]);
 
   function normalizeMarkdown(text = "") {
-    // Fix numbered lists like: "1.\n\nText" → "1. Text"
+    //Fix numbered lists like: "1.\n\nText" → "1. Text"
     return text.replace(/(\d+)\.\s*\n+/g, "$1. ");
   }
 
@@ -42,16 +42,36 @@ function Chat() {
         <div className="newChatWrapper">
           {/* <h1 className="newChatTitle">Start a new chat!</h1> */}
           {user ? (
-            <h1 className="newChatTitle">Start a new chat!</h1>
+            <div className="welcomeBox">
+              <h1 className="newChatTitle2 typing">
+                Welcome to PromptGPT,{" "}
+                <span className="usernameGradient">{user.username}</span>
+              </h1>
+              <p className="newChatSubTitle2 typing">
+                {" "}
+                Start a new conversation to begin
+              </p>
+            </div>
           ) : (
             <div>
-              <h1 className="newChatTitle">
-                You must have an account to use PromptGPT Please log in or
-                register.
+              <h1 className="newChatTitle1">
+                {"You must have an account to use PromptGPT. Please log in or register."
+                  .split("")
+                  .map((char, i) => (
+                    <span key={i} className="letter1">
+                      {char === " " ? "\u00A0" : char}
+                    </span>
+                  ))}
               </h1>
-              <p className="newChatSubtitle">
-                Log in or register through the user icon above to access
-                PromptGPT’s chat features.
+
+              <p className="newChatSubtitle1">
+                {"Log in or register through the user icon above to access PromptGPT's chat features."
+                  .split("")
+                  .map((char, i) => (
+                    <span key={i} className="letter2">
+                      {char === " " ? "\u00A0" : char} {/* preserve spaces */}
+                    </span>
+                  ))}
               </p>
             </div>
           )}

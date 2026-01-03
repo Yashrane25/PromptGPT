@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(email, password);
-      alert("Logged in successfully!");
+      // alert("Logged in successfully!");
       navigate("/chat");
     } catch (err) {
       alert(err.message);

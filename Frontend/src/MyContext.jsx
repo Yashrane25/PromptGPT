@@ -40,27 +40,55 @@ export const MyProvider = ({ children }) => {
       // Save user info
       const userInfo = { username: data.username, email: data.email };
       setUser(userInfo);
-      localStorage.setItem("user", JSON.stringify(userInfo)); // <-- Persist username & email
+      localStorage.setItem("user", JSON.stringify(userInfo)); 
     } catch (error) {
       console.error("Registration failed:", error.message);
     }
   };
 
   //LOGIN
-  const login = async (email, password) => {
-    const res = await fetch("http://localhost:8080/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      throw new Error(data.error);
-    }
+  // const login = async (email, password) => {
+  //   const res = await fetch("http://localhost:8080/api/auth/login", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ email, password }),
+  //   });
+  //   const data = await res.json();
+  //   if (!res.ok) {
+  //     throw new Error(data.error);
+  //   }
 
-    localStorage.setItem("token", data.token);
-    setToken(data.token);
-    setUser({ username: data.username, email: data.email });
+  //   localStorage.setItem("token", data.token);
+  //   setToken(data.token);
+  //   setUser({ username: data.username, email: data.email });
+  // };
+
+  const login = async (email, password) => {
+    try {
+      const res = await fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error("Login failed:", data.error);
+        return;
+      }
+
+      // ✅ Save token
+      localStorage.setItem("token", data.token);
+      setToken(data.token);
+
+      // ✅ Save user (THIS FIXES LOGOUT ON REFRESH)
+      const userInfo = { username: data.username, email: data.email };
+      setUser(userInfo);
+      localStorage.setItem("user", JSON.stringify(userInfo));
+    } catch (err) {
+      console.error("Login error:", err.message);
+    }
   };
 
   // LOGOUT
