@@ -8,14 +8,9 @@ body {
   padding: 0;
 }
 
-/* .app {
-  background-color: #212121;
-  display: flex;
-} */
-
 .app {
   background-color: #212121;
   display: flex;
-  height: 100vh;      /* 🔥 */
-  overflow: hidden;  /* 🔥 prevents page scroll */
+  height: 100vh;
+  overflow: hidden;
 }

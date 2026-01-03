@@ -140,31 +140,6 @@
 }
 
 /* User Dropdown */
-/* .dropDown {
-  position: absolute;
-  top: 4rem;
-  right: 2rem;
-  width: 80px;
-  background-color: #323232;
-  padding: 0.3rem 0.5rem;
-  border-radius: 8px;
-  text-align: left;
-  z-index: 1000;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.dropDownItem {
-  font-size: 1rem;
-  margin: 0.3rem 0rem;
-  padding: 0.5rem 0.8rem;
-  cursor: pointer;
-}
-
-.dropDownItem:hover {
-  background-color: rgba(180, 180, 180, 0.1);
-  border-radius: 8px;
-} */
-
 .dropDown {
   position: absolute;
   top: 60px;
@@ -176,7 +151,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px; /* space between items */
+  gap: 6px;
   z-index: 1000;
 }
 
@@ -185,7 +160,7 @@
   border: none;
   width: 100%;
   padding: 10px 14px;
-  border-radius: 8px; /* rounded hover box */
+  border-radius: 8px;
   text-align: left;
   color: #e5e5e5;
   font-size: 15px;
@@ -194,17 +169,16 @@
 }
 
 .dropDownItem:hover {
-  background-color: #2a2d31; /* floating button bg */
-  transform: translateX(2px); /* subtle lift */
+  background-color: #2a2d31;
+  transform: translateX(2px);
 }
 
 .dropDownItem:active {
   background-color: #3a3d42;
 }
 
-
 .username {
-  margin-right: 8px; /* space between username and icon */
-  color: white; /* or whatever fits your theme */
+  margin-right: 8px;
+  color: white;
   font-weight: bold;
 }

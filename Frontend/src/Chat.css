@@ -81,7 +81,7 @@
   text-align: center;
   margin: 20px;
 }
-.newChatSubtitle{
+.newChatSubtitle {
   color: whitesmoke;
   text-align: center;
 }
@@ -169,7 +169,7 @@
 .gptMessage p,
 .gptMessage li {
   display: inline-block;
-  margin:  0.5rem;
+  margin: 0.5rem;
 }
 
 /* Reset default list margins & padding */

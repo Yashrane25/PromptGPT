@@ -8,15 +8,6 @@ export const MyProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [loading, setLoading] = useState(true);
 
-  // Load user from token on refresh
-  // useEffect(() => {
-  //   if (token) {
-  //     // Here we can fetch full user info from backend later
-  //     setUser({ token });
-  //   }
-  //   setLoading(false);
-  // }, [token]);
-
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
     const savedToken = localStorage.getItem("token");
@@ -27,23 +18,7 @@ export const MyProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  // REGISTER
-  // const register = async (username, email, password) => {
-  //   const res = await fetch("http://localhost:8080/api/auth/register", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ username, email, password }),
-  //   });
-  //   const data = await res.json();
-  //   if (!res.ok) {
-  //     throw new Error(data.error);
-  //   }
-
-  //   localStorage.setItem("token", data.token);
-  //   setToken(data.token);
-  //   setUser({ username: data.username, email: data.email });
-  // };
-
+  //REGISTER
   const register = async (username, email, password) => {
     try {
       const res = await fetch("http://localhost:8080/api/auth/register", {

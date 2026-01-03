@@ -1,11 +1,11 @@
-// Get JWT token from localStorage
+//Get JWT token from localStorage
 export const getToken = () => localStorage.getItem("token");
 
-// Authenticated fetch that automatically includes JWT in headers
+//Authenticated fetch that automatically includes JWT in headers
 export const authFetch = async (url, options = {}) => {
   const token = getToken();
 
-  // Merge headers
+  //Merge headers
   const headers = {
     "Content-Type": "application/json",
     ...options.headers,
@@ -21,7 +21,7 @@ export const authFetch = async (url, options = {}) => {
   });
 };
 
-// Logout function: clears JWT
+//Logout function: clears JWT
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
