@@ -13,7 +13,7 @@ PromptGPT is built as a full stack web application using React.js, Node.js, Expr
     - JWT based token authentication
 
 ### 💬 Chat Interface
-    - Structured display of AI-generated responses.
+    - Structured display of AI generated responses.
     - Uses ReactMarkdown with remarkGfm and rehypeHighlight to render responses with Markdown formatting and code highlighting.
     - Supports multiple prompts and conversation history.
     - Clear differentiation between user input and AI output.
