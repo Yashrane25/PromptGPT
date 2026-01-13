@@ -1,21 +1,21 @@
 # PromptGPT 🤖
 
-PromptGPT is an AI-powered chatbot web application built to help users interact with large language models (LLMs) in a structured and user-friendly way. The platform allows users to chat, view model responses in an organized format, and manage their conversation history seamlessly.  
+PromptGPT is an AI powered chatbot web application built to help users interact with large language models (LLMs) in a structured and user friendly way. The platform allows users to chat, view model responses in an organized format and manage their conversation history seamlessly.  
 
-PromptGPT is built as a full-stack web application using React.js, TypeScript, Node.js, Express, and JWT-based authentication, following industry-level practices for security, state management, and API integration.
+PromptGPT is built as a full stack web application using React.js, TypeScript, Node.js, Express and JWT based authentication, following industry level practices for security, state management and API integration.
 
 **Live Demo:** [Click here to view PromptGPT](https://promptgpt-frontend.onrender.com/#/chat)  
 
 ## 🚀 Features
 
-### 🔐 Authentication & Authorization
-    - User Sign Up & Login using secure authentication
+### 🔐 Authentication and Authorization
+    - User Sign Up and Login using secure authentication
     - JWT-based token authentication
     - Persistent login with refresh tokens
     - Protected routes to secure user data
 
 ### 💬 Chat Interface
-    - Structured display of AI-generated responses
+    - Structured display of AI generated responses
     - Supports multiple prompts and conversation history
     - Clear differentiation between user input and AI output
     - Option to copy or download responses
@@ -31,12 +31,12 @@ PromptGPT is built as a full-stack web application using React.js, TypeScript, N
     - Node.js
     - Express.js
     - REST APIs
-#### Authentication & Security
+#### Authentication and Security
     - JWT tokens
     - Password hashing
     - Secure session handling
 
-### ⚙️ Installation & Setup
+### ⚙️ Installation and Setup
     - Prerequisites
        - Node.js (v16+ recommended)
        - Git
@@ -51,10 +51,10 @@ PromptGPT is built as a full-stack web application using React.js, TypeScript, N
     npm install
 
     3. Run the application
-    npm start
+    node server.js
 
     4. Open in browser
-    http://localhost:3000
+    http://localhost:8080
 
 ### 🔒 Security Practices
     - Passwords stored using hashing
@@ -64,7 +64,7 @@ PromptGPT is built as a full-stack web application using React.js, TypeScript, N
 
 ### 👨‍💻 Author
 Yash Rane<br>
-Computer Science & Engineering Student<br>
+Computer Science and Engineering Student<br>
 Aspiring Software Developer
 
 <br>
