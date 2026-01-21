@@ -61,8 +61,3 @@ PromptGPT is built as a full stack web application using React.js, Node.js, Expr
 Yash Rane<br>
 Computer Science and Engineering Student<br>
 Aspiring Software Developer
-
-<br>
-<br>
-<br>
-This project is for educational and learning purposes.
