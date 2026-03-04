@@ -56,8 +56,3 @@ PromptGPT is built as a full stack web application using React.js, Node.js, Expr
     - JWT authentication for secure API access
     - Users can only access their own chat history
     - Protected routes to prevent unauthorized access
-
-### 👨‍💻 Author
-Yash Rane<br>
-Computer Science and Engineering Student<br>
-Aspiring Software Developer
