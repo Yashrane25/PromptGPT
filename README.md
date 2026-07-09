@@ -18,21 +18,21 @@ Markdown-rendered responses · Code syntax highlighting · JWT authentication ·
 
 ---
 
-PromptGPT is an AI-powered chatbot web application built to help users interact with large language models (LLMs) like **LLaMA 3.1 8B Instruct** in a structured and user-friendly way. The platform allows users to chat, view model responses in an organized format, and manage their conversation history seamlessly.
+PromptGPT is an AI-powered chatbot web application built to help users interact with large language models (LLMs) like **LLaMA 3.1 8B Instruct** in a structured and user-friendly way. The platform allows users to chat, view model responses in an organized format and manage their conversation history seamlessly.
 
-This project was built to demonstrate production-relevant engineering practices including JWT-based stateless authentication, secure password hashing, LLM API integration via OpenRouter, and clean rendering of AI-generated Markdown and code responses on the frontend.
+This project was built to demonstrate production-relevant engineering practices including JWT-based stateless authentication, secure password hashing, LLM API integration via OpenRouter and clean rendering of AI-generated Markdown and code responses on the frontend.
 
 ---
 
 ## Features
 
-### 🔐 Authentication and Authorization
+### Authentication and Authorization
 
 - User sign up and login using secure authentication
 - JWT-based token authentication for stateless sessions
 - Protected routes to prevent unauthorized API access
 
-### 💬 Chat Interface
+### Chat Interface
 
 - Structured display of AI-generated responses
 - Markdown rendering via `react-markdown` with `remark-gfm`
@@ -42,25 +42,7 @@ This project was built to demonstrate production-relevant engineering practices 
 
 ---
 
-## Features
-
-### 🔐 Authentication and Authorization
-
-- User sign up and login using secure authentication
-- JWT-based token authentication for stateless sessions
-- Protected routes to prevent unauthorized API access
-
-### 💬 Chat Interface
-
-- Structured display of AI-generated responses
-- Markdown rendering via `react-markdown` with `remark-gfm`
-- Syntax-highlighted code blocks via `rehype-highlight`
-- Support for multiple prompts and full conversation history
-- Clear visual differentiation between user input and AI output
-
----
-
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 | Technology | Purpose |
@@ -127,30 +109,30 @@ MONGO_URI=your_database_connection_string_here
 
 ## Running Locally
 
-### Step 1 — Clone the repository
+### Step 1 - Clone the repository
 
 ```bash
 git clone https://github.com/Yashrane25/PromptGPT.git
 cd PromptGPT
 ```
 
-### Step 2 — Install dependencies
+### Step 2 - Install dependencies
 
 ```bash
 npm install
 ```
 
-### Step 3 — Set up your OpenRouter API key
+### Step 3 - Set up your OpenRouter API key
 
 Create an account at [openrouter.ai](https://openrouter.ai/), generate an API key, and add it to your `.env` file as `OPENROUTER_API_KEY`.
 
-### Step 4 — Start the server
+### Step 4 - Start the server
 
 ```bash
 node server.js
 ```
 
-### Step 5 — Open in browser
+### Step 5 - Open in browser
 
 ```
 http://localhost:8080
@@ -158,7 +140,7 @@ http://localhost:8080
 
 ---
 
-## 🔒 Security Practices
+## Security Practices
 
 - Passwords stored using bcrypt hashing (never in plain text)
 - JWT-based authentication for secure API access
@@ -167,7 +149,7 @@ http://localhost:8080
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 PromptGPT/
@@ -199,90 +181,3 @@ PromptGPT/
 ⭐ Star this repository if you found it helpful
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# PromptGPT 🤖
-
-PromptGPT is an AI powered chatbot web application built to help users interact with large language models (LLMs) like **LLaMA 3.1 8B Instruct** in a structured and user friendly way. The platform allows users to chat, view model responses in an organized format and manage their conversation history seamlessly.  
-
-PromptGPT is built as a full stack web application using React.js, Node.js, Express and JWT based authentication, following industry level practices for security, state management and API integration.
-
-**Live Demo:** [Click here to view PromptGPT](https://promptgpt-frontend.onrender.com/#/chat)  
-
-## 🚀 Features
-
-### 🔐 Authentication and Authorization
-    - User Sign Up and Login using secure authentication
-    - JWT based token authentication
-
-### 💬 Chat Interface
-    - Structured display of AI generated responses.
-    - Uses ReactMarkdown with remarkGfm and rehypeHighlight to render responses with Markdown formatting and code highlighting.
-    - Supports multiple prompts and conversation history.
-    - Clear differentiation between user input and AI output.
-
-### 🛠️ Tech Stack
-
-#### Frontend
-    - React.js
-    - CSS3
-#### Backend
-    - Node.js
-    - Express.js
-    - REST APIs
-#### Authentication and Security
-    - JWT tokens
-    - Password hashing
-
-### ⚙️ Installation and Setup
-    - Prerequisites
-       - Node.js (v16+ recommended)
-       - Git
-       - API key for OpenRouter to access **LLaMA 3.1 8B Instruct**
-
-### Steps to Run Locally
-    1. Clone the repository
-    git clone https://github.com/Yashrane25/PromptGPT.git
-    cd PromptGPT
-
-    2. Install dependencies
-    npm install
-
-    3. Run the application
-    node server.js
-
-    4. Open in browser
-    http://localhost:8080
-
-### 🔒 Security Practices
-    - Passwords stored using hashing
-    - JWT authentication for secure API access
-    - Users can only access their own chat history
-    - Protected routes to prevent unauthorized access
