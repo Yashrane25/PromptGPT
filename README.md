@@ -149,25 +149,6 @@ http://localhost:8080
 
 ---
 
-## Project Structure
-
-```
-PromptGPT/
-├── client/               # React frontend
-│   ├── src/
-│   │   ├── components/   # Chat UI, message bubbles, etc.
-│   │   ├── pages/        # Chat, login, signup pages
-│   │   └── App.jsx
-├── controllers/          # Route logic (auth, chat)
-├── models/               # Mongoose/DB schemas (User, Chat)
-├── routes/               # Express route definitions
-├── middleware/           # JWT auth middleware
-├── server.js             # Application entry point
-└── .env                  # Environment variables (not committed)
-```
-
----
-
 ## Contact
 
 **Yash Rane**
