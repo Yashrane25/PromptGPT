@@ -18,9 +18,9 @@ Markdown-rendered responses · Code syntax highlighting · JWT authentication ·
 
 ---
 
-ContextFlow is an AI-powered chatbot application built to help users interact with large language models (LLMs) like **LLaMA 3.1 8B Instruct** in a structured and user-friendly way. The platform allows users to chat, view model responses in an organized format and manage their conversation history seamlessly.
+ContextFlow is a full-stack AI conversation platform that enables users to interact with large language models through secure authentication, persistent conversation history and a rich Markdown based interface. Supports OpenRouter compatible LLMs (currently configured with Meta LLaMA 3.1 8B Instruct).
 
-This project was built to demonstrate production-relevant engineering practices including JWT-based stateless authentication, secure password hashing, LLM API integration via OpenRouter and clean rendering of AI-generated Markdown and code responses on the frontend.
+This project was built to demonstrate industry standard engineering practices including JWT-based stateless authentication, secure password hashing, LLM API integration via OpenRouter and clean rendering of AI-generated Markdown and code responses on the frontend.
 
 ---
 
@@ -69,6 +69,48 @@ This project was built to demonstrate production-relevant engineering practices 
 
 ---
 
+## Architecture
+
+```text
+                        +---------------------------+
+                        |        React UI           |
+                        |---------------------------|
+                        | • Authentication          |
+                        | • Chat Interface          |
+                        | • Markdown Rendering      |
+                        | • Syntax Highlighting     |
+                        +------------+--------------+
+                                     |
+                                     | HTTPS / REST API
+                                     |
+                                     ▼
+                    +--------------------------------------+
+                    |        Express.js Backend            |
+                    |--------------------------------------|
+                    | • JWT Authentication                 |
+                    | • Route Protection                   |
+                    | • Request Validation                 |
+                    | • Conversation Management            |
+                    | • OpenRouter Integration             |
+                    +-----------+--------------+-----------+
+                                |              |
+                                |              |
+                 Stores Users & Chats      Generates AI Responses
+                                |              |
+                                ▼              ▼
+                  +------------------+   +----------------------+
+                  |     MongoDB      |   |     OpenRouter API   |
+                  |------------------|   |----------------------|
+                  | • Users          |   | • LLaMA 3.1 8B       |
+                  | • Conversations  |   | • Chat Completion    |
+                  +------------------+   +----------+-----------+
+                                                    |
+                                                    ▼
+                                         Meta LLaMA 3.1 8B Instruct
+```
+
+---
+
 ## Getting Started
 
 ### Prerequisites
@@ -112,8 +154,8 @@ MONGO_URI=your_database_connection_string_here
 ### Step 1 - Clone the repository
 
 ```bash
-git clone https://github.com/Yashrane25/PromptGPT.git
-cd PromptGPT
+git clone https://github.com/Yashrane25/ContextFlow.git
+cd ContextFlow
 ```
 
 ### Step 2 - Install dependencies
