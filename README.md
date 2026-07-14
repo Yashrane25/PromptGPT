@@ -1,4 +1,4 @@
-# PromptGPT - AI-Powered Chatbot Web Application
+# ContextFlow - AI Conversation Platform
 
 <div align="center">
 
@@ -12,13 +12,13 @@
 
 Markdown-rendered responses · Code syntax highlighting · JWT authentication · Persistent chat history
 
-**🔗 Live Demo:** [promptgpt-frontend.onrender.com/#/chat](https://promptgpt-frontend.onrender.com/#/chat)
+**🔗 Live Demo:** [ContextFlow-frontend.onrender.com/#/chat](https://promptgpt-frontend.onrender.com/#/chat)
 
 </div>
 
 ---
 
-PromptGPT is an AI-powered chatbot application built to help users interact with large language models (LLMs) like **LLaMA 3.1 8B Instruct** in a structured and user-friendly way. The platform allows users to chat, view model responses in an organized format and manage their conversation history seamlessly.
+ContextFlow is an AI-powered chatbot application built to help users interact with large language models (LLMs) like **LLaMA 3.1 8B Instruct** in a structured and user-friendly way. The platform allows users to chat, view model responses in an organized format and manage their conversation history seamlessly.
 
 This project was built to demonstrate production-relevant engineering practices including JWT-based stateless authentication, secure password hashing, LLM API integration via OpenRouter and clean rendering of AI-generated Markdown and code responses on the frontend.
 
