@@ -1,4 +1,4 @@
-# ContextFlow - AI Conversation Platform
+# PromptGPT - AI Conversation Platform
 
 <div align="center">
 
@@ -12,13 +12,13 @@
 
 Markdown-rendered responses · Code syntax highlighting · JWT authentication · Persistent chat history
 
-**🔗 Live Demo:** [ContextFlow-frontend.onrender.com/#/chat](https://promptgpt-frontend.onrender.com/#/chat)
+**🔗 Live Demo:** [PromptGPT](https://promptgpt-frontend.onrender.com/#/chat)
 
 </div>
 
 ---
 
-ContextFlow is a full-stack AI conversation platform that enables users to interact with large language models through secure authentication, persistent conversation history and a rich Markdown based interface. Supports OpenRouter compatible LLMs (currently configured with Meta LLaMA 3.1 8B Instruct).
+PromptGPT is a full-stack AI conversation platform that enables users to interact with large language models through secure authentication, persistent conversation history and a rich Markdown based interface. Supports OpenRouter compatible LLMs (currently configured with Meta LLaMA 3.1 8B Instruct).
 
 This project was built to demonstrate industry standard engineering practices including JWT-based stateless authentication, secure password hashing, LLM API integration via OpenRouter and clean rendering of AI-generated Markdown and code responses on the frontend.
 
@@ -45,8 +45,9 @@ This project was built to demonstrate industry standard engineering practices in
 ## Tech Stack
 
 ### Frontend
+
 | Technology | Purpose |
-|---|---|
+| --- | --- |
 | React.js | UI framework |
 | React Router | Client-side routing |
 | react-markdown | Rendering AI responses as Markdown |
@@ -55,16 +56,18 @@ This project was built to demonstrate industry standard engineering practices in
 | CSS3 | Styling |
 
 ### Backend
+
 | Technology | Purpose |
-|---|---|
+| --- | --- |
 | Node.js + Express.js | REST API server |
 | JSON Web Token (JWT) | Stateless authentication |
 | bcrypt | Password hashing |
 | REST APIs | Client-server communication |
 
 ### AI / LLM Integration
+
 | Service | Purpose |
-|---|---|
+| --- | --- |
 | OpenRouter API | Access to LLaMA 3.1 8B Instruct model |
 
 ---
@@ -122,6 +125,7 @@ Make sure you have the following installed:
 - **Git** - [Download](https://git-scm.com/)
 
 You will also need:
+
 - An [OpenRouter](https://openrouter.ai/) API key to access **LLaMA 3.1 8B Instruct**
 
 ---
@@ -154,8 +158,8 @@ MONGO_URI=your_database_connection_string_here
 ### Step 1 - Clone the repository
 
 ```bash
-git clone https://github.com/Yashrane25/ContextFlow.git
-cd ContextFlow
+git clone https://github.com/Yashrane25/PromptGPT.git
+cd PromptGPT
 ```
 
 ### Step 2 - Install dependencies
@@ -176,7 +180,7 @@ node server.js
 
 ### Step 5 - Open in browser
 
-```
+```text
 http://localhost:8080
 ```
 
@@ -194,6 +198,7 @@ http://localhost:8080
 ## Contact
 
 **Yash Rane**
+
 - GitHub: [yashrane25](https://github.com/Yashrane25)
 - LinkedIn: [yashrane25](https://www.linkedin.com/in/yashrane25/)
 
